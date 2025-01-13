@@ -1,7 +1,7 @@
 <?php
 
 
-class Enseignant {
+class Enseignant extends Utilisatuer {
 
     private int $id ;
     private Utilisatuer $utilisatuer;

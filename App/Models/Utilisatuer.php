@@ -1,12 +1,13 @@
 <?php
  
  class Utilisatuer {
-    private int $id;
-    private string $nom ;
-    private string $prenom ;
-    private string $email;
-    private string $password;
-    private  Cours $cours;
+    protected int $id;
+    protected string $nom ;
+    protected string $prenom ;
+    protected string $email;
+    protected string $password;
+    protected  Cours $cours;
+    protected Role $role;
 
     public function __construct(){}
     public function setId(int $id):void{
@@ -27,6 +28,9 @@
     public function setCours(Cours $cours):void{
         $this->cours = $cours;
     }
+    public function setRole(Role $role):void{
+        $this->role =  $role ;
+    }
 
     public function getId() : int {
         return $this->id;
@@ -46,6 +50,9 @@
     } 
        public function getCours() : Cours {
         return $this->cours;
+    }
+    public function getRole():Role  {
+        return $this->role;
     }
    
 
