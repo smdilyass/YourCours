@@ -1,5 +1,6 @@
 <?php
 
+include "./Utilisatuer.php";
 
 class Etudiant extends Utilisatuer {
 
@@ -14,3 +15,6 @@ class Etudiant extends Utilisatuer {
 
 
 }
+
+$test = new Etudiant();
+var_dump($test);
