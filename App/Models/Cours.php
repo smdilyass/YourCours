@@ -93,8 +93,8 @@ class Cours  {
             $defaultEnseignant->setNom("default Enseignant");
             $cours->setEnseignant($defaultEnseignant);
          }
-         $query = "UPDATE cours SET nom = '". $cours->getNom .
-         "' , description = '" . $cours-> getdescription . "' , contenu = '" . $cours->getContenu . "', enseignant = '" . $cours->getEnseignant . "' , WHERE id = ". $cours->getId .";'";
+         $query = "UPDATE cours SET nom = '". $cours->getNom() .
+         "' , description = '" . $cours->getDescription() . "' , contenu = '" . $cours->getContenu() . "', enseignant = '" . $cours->getEnseignant()->getNom() . "' WHERE id = ". $cours->getId() .";";
          return $cours;
      }
        public function deleteCours(cours $cours):Cours{
