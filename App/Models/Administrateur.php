@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Models;
-class Administrateur extends Utilisatuer{
+class Administrateur extends Utilisateur
+{
     
 
     public function __construct(){}

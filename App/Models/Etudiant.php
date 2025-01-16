@@ -2,7 +2,7 @@
 namespace App\Models;
 include "./Utilisatuer.php";
 
-class Etudiant extends Utilisatuer {
+class Etudiant extends Utilisateur {
 
 
 

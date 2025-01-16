@@ -47,7 +47,7 @@ class Role {
         $description = $this->role_description ?? "";
         $logo = $this->logo ?? "";
 
-        return "(Role) => id : " . $id . " , name : " . $name . " , description : " . $description . " , logo : " . $logo;
+        return "(Role) => id : {$id} , name : '{$name}' , description : '{$description}' , logo : '{$logo}')";
     }
 
     

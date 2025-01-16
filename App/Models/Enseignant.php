@@ -3,7 +3,7 @@ namespace App\Models;
 include  "./../Models/Utilisatuer.php";
 
 
-class Enseignant extends Utilisatuer
+class Enseignant extends Utilisateur
 
 {
     private string $specialite;

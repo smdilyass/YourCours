@@ -1,5 +1,9 @@
 <?php 
-namespace App\Core;
+namespace App\Models;
+
+use PDO;
+use PDOException;
+
 class Database {
     private static $servername = "localhost";
     private static $username = "root";

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-include_once __DIR__ . "/../Models/Enseignant.php";
+include_once __DIR__ . "Enseignant.php";
 use BadMethodCallException;
 class Cours  {
     private  int $id;
@@ -72,7 +72,7 @@ class Cours  {
          $defaultEnseignant->setNom("default Enseignant");
          $cours->setEnseignant($defaultEnseignant);
       }
-      $query = "INSERT INTO cours (nom, description, contenu, enseignant) VALUES ('". $cours->getNom."' , '".$cours->getDescription."' , '".$cours->getContenu."' , ".$cours->getEnseignant.");";
+      $query = "INSERT INTO cours (nom, description, contenu, enseignant) VALUES ('". $cours->getNom ."' , '".$cours->getDescription."' , '".$cours->getContenu."' , ".$cours->getEnseignant.");";
       return $cours;
      }
      public function updateCours(cours $cours):Cours{
@@ -133,16 +133,6 @@ class Cours  {
 }
 
 $test = new Cours();
-// $test->setId(1);
-// $test->setNom("test");
-// $test->setDescription("test");
-// $test->setContenu("test");
-$test->setEnseignant(new Enseignant());
-// $test->getNom();
-// $test->getDescription();
-// $test->getContenu();
-// $test->getEnseignant();
-// $test->getId();
 var_dump($test);
 
 ?>
