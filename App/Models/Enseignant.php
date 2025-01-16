@@ -1,9 +1,10 @@
 <?php
 namespace App\Models;
-include "./Utilisatuer.php";
+include  "./../Models/Utilisatuer.php";
 
 
-class Enseignant extends Utilisateur
+class Enseignant extends Utilisatuer
+
 {
     private string $specialite;
 
