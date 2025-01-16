@@ -1,10 +1,10 @@
 <?php 
-
+namespace App\Core;
 class Database {
     private static $servername = "localhost";
     private static $username = "root";
     private static $password = "";
-    private static $dbname = "biblioKKK";
+    private static $dbname = "yourCours";
     private static $connexion;
     private static $instance;
     public static $counter = 0;
@@ -38,9 +38,5 @@ class Database {
         
         public function getConnection(){
             return self::$connexion;
-        }
-
-
-
-       
+        } 
 }

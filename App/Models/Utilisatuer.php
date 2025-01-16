@@ -1,5 +1,6 @@
 <?php
- 
+ namespace App\Models;
+    include_once __DIR__ . "/../DAO/Dao.php";
  class Utilisatuer {
     protected int $id;
     protected string $nom ;

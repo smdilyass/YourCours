@@ -1,5 +1,6 @@
 <?php
-include "./Utilisatuer.php";
+
+namespace App\Models;
 class Administrateur extends Utilisatuer{
     
 
