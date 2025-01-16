@@ -130,6 +130,12 @@ class Cours  {
           return $cours;
        }
 
+         public function __toString(): string {
+            return "id: " . $this->id . " , nom: " . $this->nom . " , description: " . $this->description . " , contenu: " . $this->contenu . " , enseignant: " . $this->enseignant;
+         }
+
+
+
 }
 
 $test = new Cours();
