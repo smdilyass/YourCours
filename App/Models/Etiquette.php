@@ -50,4 +50,44 @@ public function getLogo():string{
     {
         return "id: " .$this->id. " , name: " .$this->name. " , description: " .$this->description. " , logo:".$this->logo. ".";
     }
+
+    public function createEtiquette(Etiquette $etiquette):Etiquette{
+        if (empty($etiquette->getName()) || $etiquette->getName() == null)
+        {
+            $etiquette->setName("default Name");
+        }
+        return $etiquette;
+    }
+
+    public function updateEtiquette(Etiquette $etiquette):Etiquette{
+        if (empty($etiquette->getName()) || $etiquette->getName() == null)
+        {
+            $etiquette->setName("default Name");
+        }
+        return $etiquette;
+    }
+
+    public function deleteEtiquette(Etiquette $etiquette):Etiquette{
+        if (empty($etiquette->getName()) || $etiquette->getName() == null)
+        {
+            $etiquette->setName("default Name");
+        }
+        return $etiquette;
+    }
+
+    // public function getEtiquetteById(int $id):Etiquette{
+    //     $etiquette = new Etiquette();
+    //     $etiquette->setID($id);
+    //     $etiquette->setName("Name");
+    //     $etiquette->setDescription("Description");
+    //     return $etiquette;
+    // }
+
+    // public function getEtiquetteByName(string $name):Etiquette{
+    //     $etiquette = new Etiquette();
+    //     $etiquette->setID(1);
+    //     $etiquette->setName($name);
+    //     $etiquette->setDescription("Description");
+    //     return $etiquette;
+    // }
 }

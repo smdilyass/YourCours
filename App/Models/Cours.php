@@ -47,13 +47,14 @@ class Cours  {
    public function getEnseignant(): enseignant {
       return $this->enseignant;
    }
-   public function __call($name, $arguments) {
-      if (method_exists($this, $name)) {
-         return call_user_func_array([$this, $name], $arguments);
-      } else {
-         throw new BadMethodCallException("Method $name does not exist");
-      }
-   }
+   // public function __call($name, $arguments) {
+   //    if (method_exists($this, $name)) {
+   //       return call_user_func_array([$this, $name], $arguments);
+   //    } else {
+   //       throw new BadMethodCallException("Method $name does not exist");
+   //    }
+   // }
+
    public function createCours(Cours $cours):Cours{
       if (empty($cours->getNom()) || $cours->getNom() == null)
       {
@@ -72,7 +73,7 @@ class Cours  {
          $defaultEnseignant->setNom("default Enseignant");
          $cours->setEnseignant($defaultEnseignant);
       }
-      $query = "INSERT INTO cours (nom, description, contenu, enseignant) VALUES ('". $cours->getNom ."' , '".$cours->getDescription."' , '".$cours->getContenu."' , ".$cours->getEnseignant.");";
+      $query = "INSERT INTO cours (nom, description, contenu, enseignant) VALUES ('". $cours->getNom() ."' , '".$cours->getDescription()."' , '".$cours->getContenu()."' , ".$cours->getEnseignant().");";
       return $cours;
      }
      public function updateCours(cours $cours):Cours{
@@ -133,7 +134,6 @@ class Cours  {
          public function __toString(): string {
             return "id: " . $this->id . " , nom: " . $this->nom . " , description: " . $this->description . " , contenu: " . $this->contenu . " , enseignant: " . $this->enseignant;
          }
-
 
 
 }

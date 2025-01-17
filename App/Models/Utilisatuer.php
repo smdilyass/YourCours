@@ -9,7 +9,7 @@ use PDO;
     protected string $prenom ;
     protected string $email;
     protected string $password;
-    protected  Cours $cours;
+    // protected  Cours $cours;
     protected Role $role;
 
     public function __construct(){}
@@ -28,9 +28,9 @@ use PDO;
     public function setPassword(string $password):void{
         $this->password = $password;
     }
-    public function setCours(Cours $cours):void{
-        $this->cours = $cours;
-    }
+    // public function setCours(Cours $cours):void{
+    //     $this->cours = $cours;
+    // }
     public function setRole(Role $role):void{
         $this->role =  $role ;
     }
@@ -50,10 +50,11 @@ use PDO;
     } 
        public function getPassword() : string {
         return $this->password;
-    } 
-       public function getCours() : Cours {
-        return $this->cours;
-    }
+     } 
+
+    //    public function getCours() : Cours {
+    //     return $this->cours;
+    // }
     public function getRole():Role  {
         return $this->role;
     }
@@ -61,11 +62,11 @@ use PDO;
 
 public function __tostring(): string{
     return  "id: " .$this->id. " , nom: " .$this->nom . " , prenom: "
-    .$this->prenom . " , email: " .$this->email . " , password: " .$this->password . ",cours:" .$this->cours;
+    .$this->prenom . " , email: " .$this->email . " , password: " .$this->password . ",role:" .$this->getRole();
 }
 
 public function create(Utilisateur $user): Utilisateur{
-    $query = "INSERT INTO utilisateurs (firstname, lastname, email, password, photo, phone, role_id ) VALUES ( '". $user->getFirstname() . "' , '" . $user->getLastname() . "' , '". $user->getEmail() . "' , '" . $user->getPassword() . "', '" . $user->getPhoto() . "' , '" . $user->getPhone() . "' ,". $user->getRole()->getId() .  ");" ;
+    $query = "INSERT INTO utilisateurs (nom, prenom, email, password , role_id ) VALUES ( '". $user->getNom() . "' , '" . $user->getPrenom() . "' , '". $user->getEmail() . "' , '" . $user->getPassword() . "', ". $user->getRole()->getId() .  ");" ;
 
     $stmt = Database::getInstance()->getConnection()->prepare($query);
     $stmt->execute();
@@ -87,7 +88,7 @@ public function delete(int $id) : int {
 }
 
 public function update(Utilisateur $user) : Utilisateur {
-    $query = "UPDATE utilisateurs SET firstname = '" . $user->getFirstname() . "' , lastname = '" . $user->getLastname() . "' , email = '" . $user->getEmail() . "', password = '" . $user->getPassword() . "' , phone = '" . $user->getPhone() . "', photo = '" . $user->getPhoto() . "' , role_id = " . $user->getRole()->getRoleName() . " WEHRE id = ". $user->getId() . ";";
+    $query = "UPDATE utilisateurs SET firstname = '" . $user->getNom() . "' , lastname = '" . $user->getPrenom() . "' , email = '" . $user->getEmail() . "', password = '" . $user->getPassword() . "' , role_id = " . $user->getRole()->getRoleName() . " WEHRE id = ". $user->getId() . ";";
     
     $statement = Database::getInstance()->getConnection()->prepare($query);
     $statement->execute();
@@ -112,6 +113,10 @@ public function findById(int $id) : Utilisateur {
 
     return $statement->fetchObject(Utilisateur::class);
 }
+
+
+
+
 
 
  }
