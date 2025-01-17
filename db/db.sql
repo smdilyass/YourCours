@@ -1,11 +1,12 @@
+-- Active: 1735518593047@@127.0.0.1@3306@app
 CREATE DATABASE yourCours;
 USE yourCours;
 
-CREATE TABLE categorie (
+CREATE TABLE categories (
 id INT PRIMARY KEY AUTO_INCREMENT,
 nom VARCHAR(255) ,
 description TEXT
-)
+);
 
 
 CREATE TABLE cours (
@@ -18,15 +19,16 @@ categorie_id INT,
 FOREIGN KEY (categorie_id) REFERENCES categorie(id)
 );
 
-CREATE TABLE role (
+CREATE TABLE roles (
 id INT PRIMARY KEY AUTO_INCREMENT,
 nom VARCHAR(255) ,
 description TEXT,
 logo VARCHAR (255)
 );
+ 
 
 
-CREATE TABLE utilisateur (
+CREATE TABLE utilisateurs (
 id INT PRIMARY KEY AUTO_INCREMENT,
 nom VARCHAR(25) ,
 prenom VARCHAR(25) ,
@@ -35,6 +37,7 @@ password VARCHAR(255) ,
 role_id INT,
 FOREIGN KEY (role_id) REFERENCES roles(id)
 );
+
 
 CREATE TABLE tags (
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -52,15 +55,15 @@ CREATE TABLE cours_tags (
 
 );
  
- INSERT INTO categorie (nom, description) VALUES ('Informatique', 'Cours d''informatique');
-INSERT INTO categorie (nom, description) VALUES ('Mathematique', 'Cours de mathematique');
-INSERT INTO categorie (nom, description) VALUES ('Physique', 'Cours de physique');
+ INSERT INTO categories (nom, description) VALUES ('Informatique', 'Cours d''informatique');
+INSERT INTO categories (nom, description) VALUES ('Mathematique', 'Cours de mathematique');
+INSERT INTO categories (nom, description) VALUES ('Physique', 'Cours de physique');
 INSERT INTO cours (nom, description, contenu, photo, categorie_id) VALUES 
 ('Introduction à la programmation', 'Cours de base en programmation', 'Contenu du cours', 'photo1.jpg', 1),
 ('Algèbre linéaire', 'Cours sur les matrices et les vecteurs', 'Contenu du cours', 'photo2.jpg', 2),
 ('Mécanique classique', 'Cours sur les lois du mouvement', 'Contenu du cours', 'photo3.jpg', 3);
-INSERT INTO utilisateur (nom, prenom, email, password, role_id) VALUES ('admin', 'admin' , 'admin@admin.com', 'admin', 1);
-insert into role ()VALUES ('admin', 'Administrateur', 'logo1.jpg');
+INSERT INTO utilisateurs (nom, prenom, email, password, role_id) VALUES ('admin', 'admin' , 'admin@admin.com', 'admin', 1);
+insert into roles ()VALUES ('admin', 'Administrateur', 'logo1.jpg');
+insert into roles ()VALUES ('etudiant', 'Etudiant', 'logo2.jpg');
 
-
-
+insert into tags (nom, description, logo) VALUES ('java', 'Cours sur le langage de programmation Java', 'logo1.jpg');

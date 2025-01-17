@@ -58,6 +58,16 @@ use PDO;
     public function getRole():Role  {
         return $this->role;
     }
+
+   
+    public function login (string $email, string $password): Utilisateur {
+        $query = "SELECT * FROM utilisateurs WHERE email = '" . $email . "' password = '" . $password . "';";
+
+        $statement = Database::getInstance()->getConnection()->prepare($query);
+        $statement->execute();
+
+        return $statement->fetchObject(Utilisateur::class);
+    }
    
 
 public function __tostring(): string{
@@ -113,11 +123,6 @@ public function findById(int $id) : Utilisateur {
 
     return $statement->fetchObject(Utilisateur::class);
 }
-
-
-
-
-
 
  }
 
