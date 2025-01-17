@@ -1,4 +1,4 @@
--- Active: 1735518593047@@127.0.0.1@3306@app
+-- Active: 1735518593047@@127.0.0.1@3306@yourcours
 CREATE DATABASE yourCours;
 USE yourCours;
 
@@ -7,7 +7,19 @@ id INT PRIMARY KEY AUTO_INCREMENT,
 nom VARCHAR(255) ,
 description TEXT
 );
-
+CREATE TABLE tags (
+id INT PRIMARY KEY AUTO_INCREMENT,
+nom VARCHAR(25) ,
+description TEXT,
+logo VARCHAR (255)
+);
+CREATE TABLE etiquettes (
+id INT PRIMARY KEY AUTO_INCREMENT,
+tag_id INT,
+FOREIGN KEY (tag_id) REFERENCES tags(id),
+categorie_id INT,
+FOREIGN KEY (categorie_id) REFERENCES categories(id)
+);
 
 CREATE TABLE cours (
 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -15,8 +27,8 @@ nom VARCHAR(255) ,
 description TEXT ,
 contenu VARCHAR (255),
 photo VARCHAR (255),
-categorie_id INT,
-FOREIGN KEY (categorie_id) REFERENCES categorie(id)
+etiquettes_id INT,
+FOREIGN KEY (etiquettes_id) REFERENCES etiquettes (id)
 );
 
 CREATE TABLE roles (
@@ -39,12 +51,6 @@ FOREIGN KEY (role_id) REFERENCES roles(id)
 );
 
 
-CREATE TABLE tags (
-id INT PRIMARY KEY AUTO_INCREMENT,
-nom VARCHAR(25) ,
-description TEXT,
-logo VARCHAR (255)
-);
 
 CREATE TABLE cours_tags (
     tags_id INT,
