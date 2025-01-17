@@ -9,7 +9,7 @@ use PDO;
     protected string $prenom ;
     protected string $email;
     protected string $password;
-    // protected  Cours $cours;
+
     protected Role $role;
 
     public function __construct(){}
@@ -28,9 +28,7 @@ use PDO;
     public function setPassword(string $password):void{
         $this->password = $password;
     }
-    // public function setCours(Cours $cours):void{
-    //     $this->cours = $cours;
-    // }
+
     public function setRole(Role $role):void{
         $this->role =  $role ;
     }
@@ -52,9 +50,7 @@ use PDO;
         return $this->password;
      } 
 
-    //    public function getCours() : Cours {
-    //     return $this->cours;
-    // }
+   
     public function getRole():Role  {
         return $this->role;
     }
@@ -71,11 +67,12 @@ use PDO;
    
 
 public function __tostring(): string{
-    return  "id: " .$this->id. " , nom: " .$this->nom . " , prenom: "
-    .$this->prenom . " , email: " .$this->email . " , password: " .$this->password . ",role:" .$this->getRole();
+    return  "id: " .$this->getId(). " , nom: " .$this->getNom() . " , prenom: "
+    .$this->getPrenom() . " , email: " .$this->getEmail() . " , password: " .$this->getPassword() . ",role:" .$this->getRole();
 }
 
-public function create(Utilisateur $user): Utilisateur{
+public function create(Utilisateur $user): Utilisateur
+{
     $query = "INSERT INTO utilisateurs (nom, prenom, email, password , role_id ) VALUES ( '". $user->getNom() . "' , '" . $user->getPrenom() . "' , '". $user->getEmail() . "' , '" . $user->getPassword() . "', ". $user->getRole()->getId() .  ");" ;
 
     $stmt = Database::getInstance()->getConnection()->prepare($query);
