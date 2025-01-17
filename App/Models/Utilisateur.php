@@ -125,5 +125,10 @@ public function findById(int $id) : Utilisateur {
 }
 
  }
-
+ echo "<br>";
+ echo "<br>";
+ echo "<br>";
+ 
+ $user = new Utilisateur();
+ echo $user;
 ?>
