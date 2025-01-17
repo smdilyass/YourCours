@@ -10,8 +10,6 @@ class Categorie extends Etiquette
 
   
 
-    public function __toString():string {
-        return parent::__toString();
-    }
+   
 
 }

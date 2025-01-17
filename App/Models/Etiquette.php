@@ -5,9 +5,9 @@ namespace App\Models;
 abstract class Etiquette 
 {
     protected int $id ;
-    protected string $name;
-    protected string $description;
-    protected string $logo;
+    protected string $name ;
+    protected string $description ;
+    protected string $logo ;
 
     public function __construct(){}
 
