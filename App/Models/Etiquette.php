@@ -9,7 +9,16 @@ abstract class Etiquette
     protected string $description ;
     protected string $logo ;
 
-    public function __construct(){}
+    public  function __construct(){}
+
+// public static function create(array $data):Etiquette{
+//     $etiquette = new Etiquette();
+//     $etiquette->setName($data['name']);
+//     $etiquette->setDescription($data['description']);
+//     $etiquette->setLogo($data['logo']);
+//     return $etiquette;
+// }
+
 
 
 
@@ -56,6 +65,17 @@ public function getLogo():string{
         {
             $etiquette->setName("default Name");
         }
+        if (empty($etiquette->getDescription()) || $etiquette->getDescription() == null)
+        {
+            $etiquette->setDescription("default Description");
+        }
+        if (empty($etiquette->getLogo()) || $etiquette->getLogo() == null)
+        {
+            $etiquette->setLogo("default Logo");
+        }
+        
+        $qury = "INSERT INTO etiquettes (name, description, logo) VALUES ('" . $etiquette->getName() . "', '" . $etiquette->getDescription() . "', '" . $etiquette->getLogo() . "');";
+
         return $etiquette;
     }
 
@@ -64,6 +84,19 @@ public function getLogo():string{
         {
             $etiquette->setName("default Name");
         }
+        if (empty($etiquette->getDescription()) || $etiquette->getDescription() == null)
+        {
+            $etiquette->setDescription("default Description");
+        }
+        if (empty($etiquette->getLogo()) || $etiquette->getLogo() == null)
+        {
+            $etiquette->setLogo("default Logo");
+        }
+        if (empty($etiquette->getID()) || $etiquette->getID() == null)
+        {
+            $etiquette->setID(1);
+        }
+        $qury = "UPDATE etiquettes SET name = '" . $etiquette->getName() . "', description = '" . $etiquette->getDescription() . "', logo = '" . $etiquette->getLogo() . "' WHERE id = " . $etiquette->getID() . ";";
         return $etiquette;
     }
 
@@ -72,9 +105,26 @@ public function getLogo():string{
         {
             $etiquette->setName("default Name");
         }
+        if (empty($etiquette->getDescription()) || $etiquette->getDescription() == null)
+        {
+            $etiquette->setDescription("default Description");
+        }
+        if (empty($etiquette->getLogo()) || $etiquette->getLogo() == null)
+        {
+            $etiquette->setLogo("default Logo");
+        }
+        if (empty($etiquette->getID()) || $etiquette->getID() == null)
+        {
+            $etiquette->setID(1);
+        }
+        $qury = "DELETE FROM etiquettes WHERE id = " . $etiquette->getID() . ";";
+        $qury = "DELETE FROM etiquettes WHERE name = " . $etiquette->getName() . ";";
+    
         return $etiquette;
     }
 
+
+}
     // public function getEtiquetteById(int $id):Etiquette{
     //     $etiquette = new Etiquette();
     //     $etiquette->setID($id);
@@ -90,4 +140,3 @@ public function getLogo():string{
     //     $etiquette->setDescription("Description");
     //     return $etiquette;
     // }
-}
