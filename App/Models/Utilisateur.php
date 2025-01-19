@@ -12,7 +12,6 @@ use PDO;
 
     protected Role $role;
 
-    public function __construct(){}
     public function setId(int $id):void{
         $this->id = $id;
     }
@@ -57,9 +56,11 @@ use PDO;
 
    
     public function login (string $email, string $password): Utilisateur {
-        $query = "SELECT * FROM utilisateurs WHERE email = '" . $email . "' password = '" . $password . "';";
+        $query = "SELECT * FROM utilisateurs WHERE email = :email AND password = :password;";
 
         $statement = Database::getInstance()->getConnection()->prepare($query);
+        $statement->bindParam(':email', $email);
+        $statement->bindParam(':password', $password);
         $statement->execute();
 
         return $statement->fetchObject(Utilisateur::class);
@@ -71,61 +72,39 @@ public function __tostring(): string{
     .$this->getPrenom() . " , email: " .$this->getEmail() . " , password: " .$this->getPassword() . ",role:" .$this->getRole();
 }
 
-public function create(Utilisateur $user): Utilisateur
-{
-    $query = "INSERT INTO utilisateurs (nom, prenom, email, password , role_id ) VALUES ( '". $user->getNom() . "' , '" . $user->getPrenom() . "' , '". $user->getEmail() . "' , '" . $user->getPassword() . "', ". $user->getRole()->getId() .  ");" ;
-
-    $stmt = Database::getInstance()->getConnection()->prepare($query);
-    $stmt->execute();
-
-    $user->setId(Database::getInstance()
-        ->getConnection()
-        ->lastInsertId());
-
-    return $user;
-}
-
 public function delete(int $id) : int {
-    $query = "DELETE FROM utilisateurs WHERE id = " . $id . " ;";
+    $query = "DELETE FROM utilisateurs WHERE id = :id;";
 
     $statement = Database::getInstance()->getConnection()->prepare($query);
+    $statement->bindParam(':id', $id, PDO::PARAM_INT);
     $statement->execute();
 
     return $statement->rowCount();
 }
 
-public function update(Utilisateur $user) : Utilisateur {
-    $query = "UPDATE utilisateurs SET firstname = '" . $user->getNom() . "' , lastname = '" . $user->getPrenom() . "' , email = '" . $user->getEmail() . "', password = '" . $user->getPassword() . "' , role_id = " . $user->getRole()->getRoleName() . " WEHRE id = ". $user->getId() . ";";
-    
-    $statement = Database::getInstance()->getConnection()->prepare($query);
-    $statement->execute();
 
-    return $user;
-}
+
 
 public function findAll() : array {
     $query = "SELECT * FROM utilisateurs";
-
+    
     $statement = Database::getInstance()->getConnection()->prepare($query);
     $statement->execute();
-
+    
     return $statement->fetchAll(PDO::FETCH_CLASS, Utilisateur::class);
 }
-
-public function findById(int $id) : Utilisateur {
-    $query = "SELECT * FROM utilisateurs WHERE id = " . $id;
-
+    public function findById(int $id) : Utilisateur {
+    $query = "SELECT * FROM utilisateurs WHERE id = :id";
+    
     $statement = Database::getInstance()->getConnection()->prepare($query);
+    $statement->bindParam(':id', $id, PDO::PARAM_INT);
     $statement->execute();
-
+    
     return $statement->fetchObject(Utilisateur::class);
 }
 
- }
- echo "<br>";
- echo "<br>";
- echo "<br>";
- 
- $user = new Utilisateur();
- echo $user;
+
+}
+
+
 ?>

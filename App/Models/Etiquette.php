@@ -57,7 +57,7 @@ public function getLogo():string{
 
     public function __toString(): string
     {
-        return "id: " .$this->id. " , name: " .$this->name. " , description: " .$this->description. " , logo:".$this->logo. ".";
+        return "id: {$this->id}, name: {$this->name}, description: {$this->description}, logo: {$this->logo}.";
     }
 
     public function createEtiquette(Etiquette $etiquette):Etiquette{
@@ -74,7 +74,8 @@ public function getLogo():string{
             $etiquette->setLogo("default Logo");
         }
         
-        $qury = "INSERT INTO etiquettes (name, description, logo) VALUES ('" . $etiquette->getName() . "', '" . $etiquette->getDescription() . "', '" . $etiquette->getLogo() . "');";
+        $query = "INSERT INTO etiquettes (name, description, logo) VALUES ('" . $etiquette->getName() . "', '" . $etiquette->getDescription() . "', '" . $etiquette->getLogo() . "');";
+        // Execute the query here
 
         return $etiquette;
     }
@@ -116,27 +117,12 @@ public function getLogo():string{
         if (empty($etiquette->getID()) || $etiquette->getID() == null)
         {
             $etiquette->setID(1);
+        $query = "DELETE FROM etiquettes WHERE id = " . $etiquette->getID() . ";";
+        $query = "DELETE FROM etiquettes WHERE name = '" . $etiquette->getName() . "';";
         }
-        $qury = "DELETE FROM etiquettes WHERE id = " . $etiquette->getID() . ";";
-        $qury = "DELETE FROM etiquettes WHERE name = " . $etiquette->getName() . ";";
     
         return $etiquette;
     }
-
-
 }
-    // public function getEtiquetteById(int $id):Etiquette{
-    //     $etiquette = new Etiquette();
-    //     $etiquette->setID($id);
-    //     $etiquette->setName("Name");
-    //     $etiquette->setDescription("Description");
-    //     return $etiquette;
-    // }
 
-    // public function getEtiquetteByName(string $name):Etiquette{
-    //     $etiquette = new Etiquette();
-    //     $etiquette->setID(1);
-    //     $etiquette->setName($name);
-    //     $etiquette->setDescription("Description");
-    //     return $etiquette;
-    // }
+?>
