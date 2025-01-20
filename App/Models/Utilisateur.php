@@ -82,9 +82,6 @@ public function delete(int $id) : int {
     return $statement->rowCount();
 }
 
-
-
-
 public function findAll() : array {
     $query = "SELECT * FROM utilisateurs";
     
