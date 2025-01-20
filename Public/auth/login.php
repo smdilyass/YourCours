@@ -31,7 +31,7 @@
 
 								<div class="form-group">
 									<label for="password">Password
-										<a href="forgot.html" class="float-right">
+										<a href="../auth/forgot.php" class="float-right">
 											Forgot Password?
 										</a>
 									</label>
@@ -54,7 +54,7 @@
 									</button>
 								</div>
 								<div class="mt-4 text-center">
-									Don't have an account? <a href="./auth/signup.php">Create One</a>
+									Don't have an account? <a href="../auth/signup.php">Create One</a>
 								</div>
 							</form>
 						</div>
@@ -74,4 +74,3 @@
 </body>
 </html>
 
-    
