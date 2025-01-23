@@ -74,6 +74,9 @@ CREATE TABLE cours_tags (
     PRIMARY KEY (tags_id, cours_id)
 
 );
+INSERT INTO users (nom, prenom, email, password, role) VALUES ('admin', 'admin' , 'admin@gmail.com', 'admin', 'admin');
+INSERT INTO roles (nom, description, logo) VALUES ('admin', 'Administrateur', 'logo1.jpg');
+select * from users;
  
  INSERT INTO categories (nom, description) VALUES ('Informatique', 'Cours d''informatique');
 INSERT INTO categories (nom, description) VALUES ('Mathematique', 'Cours de mathematique');
