@@ -43,4 +43,8 @@ class Database {
         public function getConnection(){
             return self::$connexion;
         } 
-}
+ }
+$connexion = Database::getInstance();
+ var_dump(Database::$counter);
+
+?>
